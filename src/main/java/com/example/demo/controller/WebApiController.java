@@ -9,6 +9,7 @@ public class WebApiController {
 
 	/**
 	 * http://localhost:8080/api/helloでログインできる
+	 * 		⇒表示される内容：SpringBoot!
 	 * @return
 	 */
 
@@ -16,4 +17,16 @@ public class WebApiController {
 	private String hello() {
 		return "SpringBoot!";
 	}
+
+	public static class HogeMogeBean {
+		private String hoge;
+		private int moge;
+		// prpperty と ctor は省略
+	}
+
+	@RequestMapping("hogemoge")
+	public HogeMogeBean hogemoge() {
+		return new HogeMogeBean("ほげ", 1234);
+	}
+
 }
