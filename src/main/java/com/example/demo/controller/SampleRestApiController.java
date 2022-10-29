@@ -23,16 +23,26 @@ import org.springframework.web.bind.annotation.RestController;
 public class SampleRestApiController {
 	private static final Logger log = LoggerFactory.getLogger(SampleRestApiController.class);
 
+	/**
+	 * ～/test/"任意の文字列"  でアクセスできる
+	 * @param param
+	 * @return
+	 */
 	@RequestMapping("/test/{param}")
 	private String testPathVariable(@PathVariable String param) {
 		log.info(param);
-		return "受け取ったパラメータ：" + param;
+		return "「/test/{param}」を使って、受け取ったパラメータ：" + param;
 	}
 
+	/**
+	 * ~/test?param=xxxx でアクセスできる
+	 * @param param
+	 * @return
+	 */
 	@RequestMapping("/test")
 	private String testRequestParam(@RequestParam String param) {
 		log.info(param);
-		return "受け取ったパラメータ：" + param;
+		return "「/test?param=xxxx」を使って、受け取ったパラメータ：" + param;
 	}
 
 	@RequestMapping(value = "/test", method = RequestMethod.POST)
